@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import config from '../../config'
 import { setFeedsAction, setFeedsTitleAction } from '../../store/actions'
@@ -9,14 +9,17 @@ export const RowFeedItems = () => {
 	const feeds = useSelector(state => state.feeds.feeds)
 	const title = useSelector(state => state.feeds.title)
 
-	const feedsHandler = ({ feeds, title }) => {
-		dispatch(setFeedsAction(feeds))
-		dispatch(setFeedsTitleAction(title))
-	}
+	const feedsHandler = useCallback(
+		({ feeds, title }) => {
+			dispatch(setFeedsAction(feeds))
+			dispatch(setFeedsTitleAction(title))
+		},
+		[dispatch]
+	)
 
 	useEffect(() => {
 		feedsHandler({ feeds: config.feeds, title: config.title })
-	}, [])
+	}, [feedsHandler])
 
 	return (
 		<div className='feed-selection-layout__row'>
