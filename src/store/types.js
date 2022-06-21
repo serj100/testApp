@@ -1,0 +1,3 @@
+export const SET_FEEDS = 'SET_FEEDS'
+export const SET_FEEDS_TITLE = 'SET_FEEDS_TITLE'
+export const SHANGE_FEED_STATUS = 'SHANGE_FEED_STATUS'
