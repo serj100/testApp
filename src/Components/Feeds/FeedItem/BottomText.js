@@ -14,14 +14,14 @@ const BottomText = props => {
 		return (
 			<p>
 				Чего сидишь? Порадуй котэ{' '}
-				<a
+				<button
 					href='#'
 					onClick={() => {
 						changeStatusHandler({ id: props.id, status: props.status })
 					}}
 				>
 					купи
-				</a>
+				</button>
 			</p>
 		)
 	}
